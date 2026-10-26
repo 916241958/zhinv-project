@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="织女">
+  <!-- 经纬方印：三经三纬平纹交织，中间一根纬线为栀子金 -->
+  <rect width="120" height="120" rx="4" fill="#24407A"/>
+  <g fill="#F4EFE4">
+    <rect x="14" y="25" width="92" height="16"/>
+    <rect x="14" y="52" width="92" height="16" fill="#E3B23C"/>
+    <rect x="14" y="79" width="92" height="16"/>
+  </g>
+  <g fill="#F4EFE4" stroke="#24407A" stroke-width="3">
+    <rect x="25" y="14" width="16" height="92"/>
+    <rect x="52" y="14" width="16" height="92"/>
+    <rect x="79" y="14" width="16" height="92"/>
+  </g>
+  <!-- 纬线压经线的交点 -->
+  <g>
+    <rect x="23.5" y="50.5" width="19" height="19" fill="#24407A"/><rect x="23.5" y="52" width="19" height="16" fill="#E3B23C"/>
+    <rect x="77.5" y="50.5" width="19" height="19" fill="#24407A"/><rect x="77.5" y="52" width="19" height="16" fill="#E3B23C"/>
+    <rect x="50.5" y="23.5" width="19" height="19" fill="#24407A"/><rect x="50.5" y="25" width="19" height="16" fill="#F4EFE4"/>
+    <rect x="50.5" y="77.5" width="19" height="19" fill="#24407A"/><rect x="50.5" y="79" width="19" height="16" fill="#F4EFE4"/>
+  </g>
+</svg>
