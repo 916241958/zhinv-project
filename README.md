@@ -10,10 +10,13 @@
 
 <br>
 
-![演示版](https://img.shields.io/badge/版本-演示版-203b5b?style=flat-square)
-![真实模型调用](https://img.shields.io/badge/DeepSeek-7%20次真实调用-2f6f68?style=flat-square)
-![跨角色协作](https://img.shields.io/badge/独立会话-5%20个-9b6a32?style=flat-square)
-![验收步骤](https://img.shields.io/badge/验收流程-15%20步-5e6472?style=flat-square)
+![FastAPI](https://img.shields.io/badge/FastAPI-async-2f6f68?style=flat-square)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-SQLAlchemy%202-203b5b?style=flat-square)
+![Vue 3](https://img.shields.io/badge/Vue-3.5-2f6f68?style=flat-square)
+![DeepSeek](https://img.shields.io/badge/LLM-DeepSeek-9b6a32?style=flat-square)
+![状态](https://img.shields.io/badge/状态-演示版-5e6472?style=flat-square)
+
+[观看演示视频](#演示视频) · [界面预览](#界面预览) · [技术实现](#技术实现) · [联系我](#联系)
 
 </div>
 
@@ -37,7 +40,7 @@
 
 这种分工让模型有明确边界：它可以帮助业务人员更快理解和组织信息，但不能替代权限校验、规则计算或人工审批。
 
-## 一次完整的业务交叉
+## 一次完整的跨角色流程
 
 <table>
 <tr>
@@ -56,7 +59,7 @@
 - 7 次真实 DeepSeek 调用：询价分析、来料分析、客户回复和补料邮件
 - 713 个 API 请求，非预期失败响应为 0，浏览器异常为 0
 - 初检人员本人尝试复判时由后端拒绝，验证职责分离规则有效
-- 补料邮件和客户回复保留为草稿，未在演示中未经确认向外部发送
+- 补料邮件和客户回复保留为草稿，未经人工确认不会对外发送
 
 ## 界面预览
 
@@ -118,17 +121,26 @@
 
 ## 演示视频
 
-### 大模型作用说明版
+点击下方封面观看完整演示（3 分 19 秒，1920×1080）。视频无配音，右侧讲解栏按 15 个步骤说明输入资料、模型输出，以及规则和人工各自承担的职责。
 
-右侧讲解栏按 15 个步骤说明输入资料、模型输出，以及规则和人工各自承担的职责。
+<a href="https://github.com/916241958/zhinv-project/blob/main/zhinv-demo.mp4">
+  <img src="screenshots/step-07.png" alt="点击观看织女演示视频" width="100%">
+</a>
 
-<video controls width="100%">
-  <source src="https://github.com/916241958/zhinv-project/raw/refs/heads/main/zhinv-demo.mp4" type="video/mp4">
-</video>
+<p align="center"><a href="https://github.com/916241958/zhinv-project/blob/main/zhinv-demo.mp4">▶ 在线播放演示视频</a> · <a href="https://github.com/916241958/zhinv-project/raw/main/zhinv-demo.mp4">下载 MP4（约 28.7 MB）</a></p>
 
-<p><a href="https://github.com/916241958/zhinv-project/raw/refs/heads/main/zhinv-demo.mp4">打开或下载大模型作用说明版视频</a></p>
+## 技术实现
 
-视频信息：3 分 19 秒，1920×1080，H.264 MP4，无音轨，约 28.7 MB。
+| 层 | 技术 |
+| --- | --- |
+| 后端 | Python · FastAPI（异步）· SQLAlchemy 2 · Alembic 迁移 · SSE 流式输出 · APScheduler |
+| 数据 | PostgreSQL（asyncpg），本地开发可用 SQLite |
+| 安全 | JWT 鉴权 · Argon2 密码哈希 · 敏感配置加密 · 后端统一权限与职责分离校验 |
+| 前端 | Vue 3 · Vite · pdf.js 资料预览 |
+| 模型 | DeepSeek，经后端统一编排；模型只负责分析与起草，不参与权限和金额计算 |
+| 部署 | Docker / docker-compose |
+
+设计上采用模块化单体：业务规则、权限校验和审计在后端确定性执行，大模型作为受控的分析组件接入，每次调用的输入资料与输出都可追溯。
 
 ## 项目边界
 
@@ -137,3 +149,10 @@
 ## 项目状态
 
 当前版本为产品概念与功能演示版本，持续完善中。
+
+## 联系
+
+如果你对产品合作、试用或这个项目的实现细节感兴趣，欢迎联系：
+
+- GitHub：[@916241958](https://github.com/916241958)
+- 邮箱：<!-- TODO: 填写你的邮箱 -->
